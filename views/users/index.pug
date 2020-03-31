@@ -1,0 +1,13 @@
+doctype
+html(lang='en')
+    head
+        meta(charset='utf-8')
+        title
+    body
+        a(href="users/create") Create new user
+        form(action="/users" method="method")
+            input(type="text" name="search" value=search)
+            input(type="submit", value="Submit")
+        ul
+            each user in users
+                li= user.name
