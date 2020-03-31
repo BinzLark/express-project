@@ -10,4 +10,7 @@ html(lang='en')
             input(type="submit", value="Submit")
         ul
             each user in users
-                li= user.name
+                li
+                    span= user.name 
+                    button(style="margin:15px") 
+                        a(href="/users/"+user.id style="text-decoration:none") View

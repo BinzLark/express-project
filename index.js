@@ -1,4 +1,5 @@
 const express = require('express');
+const shortid = require('shortid');
 const app = express();
 
 const low = require('lowdb')
@@ -6,8 +7,8 @@ const FileSync = require('lowdb/adapters/FileSync')
 
 const adapter = new FileSync('db.json');
 const db = low(adapter);
-db.defaults({ users:[]})
-  .write()
+db.defaults({ users: [] })
+    .write()
 
 const port = 3000;
 
@@ -31,12 +32,12 @@ app.get('/users', function (req, res) {
     });
 });
 
-app.get('/users/create',(req,res)=>{
+app.get('/users/create', (req, res) => {
     res.render('users/create');
 });
 
-app.post('/users/create',(req,res)=>{
-    // users.push(req.body);
+app.post('/users/create', (req, res) => {
+    req.body.id = shortid.generate();
     db.get('users').push(req.body).write();
     res.redirect('/users')
     // res.json(req.body)
@@ -45,6 +46,11 @@ app.get('/', function (req, res) {
     res.render('index');
 });
 
+app.get('/users/:id',function(req,res){
+    let id = req.params.id;
+    let user = db.get('users').find({id}).value();
+    res.render('users/detail',{user})
+});
 app.listen(port, function () {
     console.log("Server listening on port " + port);
 });
