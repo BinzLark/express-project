@@ -7,10 +7,10 @@ html(lang='en')
         a(href="users/create") Create new user
         form(action="/users" method="method")
             input(type="text" name="search" value=search)
-            input(type="submit", value="Submit")
+            input(type="submit", value="Search")
         ul
             each user in users
                 li
-                    span= user.name 
+                    span(style="text-transform:capitalize")= user.name 
                     button(style="margin:15px") 
                         a(href="/users/"+user.id style="text-decoration:none") View
