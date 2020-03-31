@@ -1,5 +1,14 @@
 const express = require('express');
 const app = express();
+
+const low = require('lowdb')
+const FileSync = require('lowdb/adapters/FileSync')
+
+const adapter = new FileSync('db.json');
+const db = low(adapter);
+db.defaults({ users:[]})
+  .write()
+
 const port = 3000;
 
 app.use(express.json()) // for parsing application/json
@@ -8,14 +17,7 @@ app.use(express.urlencoded({ extended: true })) // for parsing application/x-www
 app.set('view engine', 'pug');
 app.set('views', './views');
 
-var users = [
-    { id: 1, name: "Phan Viet Tan", age: 21 },
-    { id: 2, name: "Nguyen Nhat Bao", age: 21 },
-    { id: 3, name: "Nguyen Van Toan", age: 21 },
-    { id: 4, name: "Le Van Loc", age: 21 },
-    { id: 5, name: "Nguyen Ngoc Linh", age: 21 },
-    { id: 5, name: "Tran Phuoc Minh", age: 21 },
-];
+var users = db.get('users').value();
 
 app.get('/users', function (req, res) {
     let search = req.query.search;
@@ -34,7 +36,8 @@ app.get('/users/create',(req,res)=>{
 });
 
 app.post('/users/create',(req,res)=>{
-    users.push(req.body);
+    // users.push(req.body);
+    db.get('users').push(req.body).write();
     res.redirect('/users')
     // res.json(req.body)
 });
