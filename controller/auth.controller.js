@@ -6,7 +6,7 @@ module.exports.login = function (req, res, next) {
 
 module.exports.postLogin = function (req, res, next) {
     let { username, password } = req.body;
-    
+
     let user = db.get('users').find({ username }).value();
     let errors = [];
     if (!user) {
@@ -21,8 +21,10 @@ module.exports.postLogin = function (req, res, next) {
             errors, old: req.body
         });
         return;
-    } 
+    }
 
-    res.cookie('userId',user.id);
+    res.cookie('userId', user.id, {
+        signed: true
+    });
     res.redirect('/users');
 };

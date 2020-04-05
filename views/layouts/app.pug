@@ -17,5 +17,7 @@ html(lang="en")
                         span.sr-only (current)
                     li.nav-item
                         a.nav-link(href='/users') User
+            if user
+                div=user.name
         main.container.pt-5
             block content

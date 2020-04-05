@@ -11,7 +11,7 @@ const app = express();
 app.use(express.static('public'));
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
-app.use(cookieParser());
+app.use(cookieParser("tandeptrai123"));
 
 app.set('view engine', 'pug');
 app.set('views', './views');
