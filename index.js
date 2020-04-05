@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const cookieParser = require('cookie-parser')
 
@@ -11,12 +13,12 @@ const app = express();
 app.use(express.static('public'));
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
-app.use(cookieParser("tandeptrai123"));
+app.use(cookieParser(process.env.SESSION_SECRET));
 
 app.set('view engine', 'pug');
 app.set('views', './views');
 
-app.use('/users', authMiddleware.requireAuth , userRoute);
+app.use('/users', authMiddleware.requireAuth, userRoute);
 app.use('/auth', authRoute);
 
 app.get('/', function (req, res) {
