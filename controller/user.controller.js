@@ -1,14 +1,13 @@
 const db = require('../db');
 const shortid = require('shortid');
 
-
 module.exports.index = function (req, res) {
     let users = db.get('users').value();
     let search = req.query.search;
     let newUser = [];
     if (search)
         newUser = users.filter(user => user.name.toLowerCase().indexOf(search.toLowerCase()) != -1);
-    console.log(search);
+
     res.render('users/index', {
         users: newUser.length > 0 ? newUser : users,
         search: search ? search : ''
@@ -21,6 +20,7 @@ module.exports.create = (req, res) => {
 
 module.exports.postCreate = (req, res) => {
     req.body.id = shortid.generate();
+    console.log(res.locals);
     db.get('users').push(req.body).write();
     res.redirect('/users')
     // res.json(req.body)
@@ -28,8 +28,8 @@ module.exports.postCreate = (req, res) => {
 
 module.exports.view = function (req, res) {
     let id = req.params.id;
-    let user = db.get('users').find({id}).value();
-    res.render('users/detail', {user})
+    let user = db.get('users').find({ id }).value();
+    res.render('users/detail', { user })
 };
 
 

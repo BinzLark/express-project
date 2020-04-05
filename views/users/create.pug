@@ -1,12 +1,16 @@
-<!DOCTYPE html>
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title Document
-    body
-        form(action="/users/create", method="post")
+extends ../layouts/app
+block content
+   
+    h1 Create User
+    if errors
+        each error in errors
+            .alert.alert-danger=error
+
+    form(action="/users/create" method="post")
+        .form-group
             label(for="name") Name of user: 
-            input(type="text" id="name" name="name")
-            input(type="submit", value="Create")
-        
+            input.form-control(type="text" name="name" value=old?old.name:'')
+        .form-group
+            label(for="phone") Phone of user: 
+            input.form-control(type="text" id="phone" value=old?old.phone:'' name="phone")    
+        input.btn.btn-primary(type="submit" value="Create")

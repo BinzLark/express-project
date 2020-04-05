@@ -1,0 +1,15 @@
+extends ../layouts/app
+block content
+   
+    h1 Login
+    if errors
+        each err in errors
+            .alert.alert-danger= err
+    form(action="/auth/login" method="post")
+        .form-group
+            label(for="username") Username: 
+            input.form-control(type="text" name="username" value=old?old.username:'')
+        .form-group
+            label(for="password") Password: 
+            input.form-control(type="password" id="password" value=old?old.password:'' name="password")    
+        input.btn.btn-primary(type="submit" value="Login")

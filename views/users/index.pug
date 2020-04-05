@@ -1,16 +1,23 @@
-doctype
-html(lang='en')
-    head
-        meta(charset='utf-8')
-        title
-    body
-        a(href="users/create") Create new user
-        form(action="/users" method="method")
-            input(type="text" name="search" value=search)
-            input(type="submit", value="Search")
-        ul
-            each user in users
-                li
+extends ../layouts/app
+block content
+    h1 
+        span User
+        a(href="users/create" class="btn btn-primary ml-3") New
+    .d-flex.justify-content-end
+        form.w-25.d-flex(action="/users" method="method")
+            input(type="text" class="form-control" name="search" value=search)
+            input(type="submit", class="btn btn-primary ml-3" value="Search")
+    table.table.table-hover.table-striped.mt-3(style="font-size:15px")
+        thead
+            tr
+                th Name
+                th Phone
+                th Action
+        tbody
+        each user in users
+            tr
+                td
                     span(style="text-transform:capitalize")= user.name 
-                    button(style="margin:15px") 
-                        a(href="/users/"+user.id style="text-decoration:none") View
+                td= user.phone
+                td
+                    a(href="/users/"+user.id style="text-decoration:none") View
