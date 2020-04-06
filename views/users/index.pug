@@ -10,12 +10,15 @@ block content
     table.table.table-hover.table-striped.mt-3(style="font-size:15px")
         thead
             tr
+                th Avatar
                 th Name
                 th Phone
                 th Action
         tbody
         each user in users
             tr
+                td
+                    img.rounded-circle.avatar(src=user.avatar||'https://via.placeholder.com/32' width="32" height="32")
                 td
                     span(style="text-transform:capitalize")= user.name 
                 td= user.phone
