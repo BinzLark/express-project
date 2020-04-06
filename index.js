@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser')
 
 const userRoute = require('./routes/user.route');
 const authRoute = require('./routes/auth.route');
+const productRoute = require('./routes/product.route')
 const authMiddleware = require('./middleware/auth.middleware');
 
 const port = 3000;
@@ -20,6 +21,7 @@ app.set('views', './views');
 
 app.use('/users', authMiddleware.requireAuth, userRoute);
 app.use('/auth', authRoute);
+app.use('/products',productRoute);
 
 app.get('/', function (req, res) {
     res.render('index');
