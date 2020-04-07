@@ -628,5 +628,36 @@
       "image": "https://loremflickr.com/320/240",
       "description": "vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae mauris viverra diam vitae quam suspendisse potenti"
     }
+  ],
+  "sessions": [
+    {
+      "id": "ecWJgNEMw",
+      "cart": {
+        "fd126d31-7a86-4643-8aac-acaf4c8dccca": 2,
+        "41be297b-5f5e-4967-9525-feb32fab5010": 1
+      }
+    },
+    {
+      "id": "19Gjo7YxQ",
+      "cart": {
+        "fd126d31-7a86-4643-8aac-acaf4c8dccca": 2,
+        "41be297b-5f5e-4967-9525-feb32fab5010": 2,
+        "7af4705f-8792-410b-ad3d-1862499403b7": 1,
+        "0127d9b5-45d8-4153-ba14-9b8f166d0aa1": 1
+      }
+    },
+    {
+      "id": "EA7K9kswc",
+      "cart": {
+        "7af4705f-8792-410b-ad3d-1862499403b7": 6
+      }
+    },
+    {
+      "id": "HslrPYqqD",
+      "cart": {
+        "7af4705f-8792-410b-ad3d-1862499403b7": 8,
+        "07bef31f-5bc3-44e0-b83a-ba7154d9810f": 1
+      }
+    }
   ]
 }

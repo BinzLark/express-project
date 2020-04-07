@@ -3,3 +3,11 @@
 img.avatar{
     object-fit: cover;
 }
+
+.cart-total{
+    font-size: 0.8em;
+    position: relative;
+    bottom: 5px;
+    color: red;
+    font-weight: bold;
+}
