@@ -6,6 +6,7 @@ block content
         each err in errors
             .alert.alert-danger= err
     form(action="/auth/login" method="post")
+        input(type="hidden", name="_csrf" value=csrfTokenq)
         .form-group
             label(for="username") Username: 
             input.form-control(type="text" name="username" value=old?old.username:'')
