@@ -33,7 +33,7 @@ app.use('/cart', cartRoute);
 app.use('/transfer', authMiddleware.requireAuth, transferRoute);
 
 app.get('/', function (req, res) {
-    res.render('index');
+    res.render('index');  
 });
 
 app.listen(port, function () {
